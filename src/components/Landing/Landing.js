@@ -1,12 +1,17 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
-import { Button } from '@material-ui/core';
+import { Box, Button } from '@material-ui/core';
 import { NavHashLink as NavLink } from 'react-router-hash-link';
 import { makeStyles } from '@material-ui/core/styles';
 
+import SmsIcon from '@mui/icons-material/Sms';
+import CoffeeIcon from '@mui/icons-material/Coffee';
 import './Landing.css';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import { headerData } from '../../data/headerData';
 import { socialsData } from '../../data/socialsData';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
 
 import {
     FaTwitter,
@@ -16,8 +21,26 @@ import {
     FaBlogger,
 } from 'react-icons/fa';
 
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 340,
+    bgcolor: '#ffac33',
+    border: '4px solid #76ff03',
+    boxShadow: 24,
+    p: 4,
+    borderRadius:'40px',
+    
+  };
+
 function Landing() {
     const { theme, drawerOpen } = useContext(ThemeContext);
+     
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     const useStyles = makeStyles((t) => ({
         resumeBtn: {
@@ -25,7 +48,7 @@ function Landing() {
             borderRadius: '30px',
             textTransform: 'inherit',
             textDecoration: 'none',
-            width: '150px',
+            width: 'auto',
             fontSize: '1rem',
             fontWeight: '500',
             height: '50px',
@@ -38,9 +61,14 @@ function Landing() {
                 border: `3px solid ${theme.tertiary}`,
             },
             [t.breakpoints.down('sm')]: {
-                width: '180px',
+                // display: 'none',
+                width:'auto',
+                
             },
         },
+
+        
+
         contactBtn: {
             backgroundColor: theme.primary,
             color: theme.secondary,
@@ -60,7 +88,9 @@ function Landing() {
                 border: `3px solid ${theme.tertiary}`,
             },
             [t.breakpoints.down('sm')]: {
-                display: 'none',
+                width: 'auto',
+                marginTop:'20px'
+                
             },
         },
     }));
@@ -163,27 +193,54 @@ function Landing() {
                         <h1>{headerData.name}</h1>
                         <p>{headerData.desciption}</p>
 
-                        <div className='lcr-buttonContainer'>
-                            {headerData.resumePdf && (
+                        <div className='lcr-buttonContainer' justifyContent="space-evenly">
+                            {/* {headerData.resumePdf && (
                                 <a
                                     href={headerData.resumePdf}
                                     download='resume'
                                     target='_blank'
                                     rel='noreferrer'
                                 >
-                                    <Button className={classes.resumeBtn}>
-                                        Download CV
+                                    <Button className={classes.resumeBtn} startIcon={<CoffeeIcon/>}>
+                                        Buy me coffee
                                     </Button>
                                 </a>
-                            )}
+                            )} */}
+
+                           
+ <div>
+      <Button onClick={handleOpen} className={classes.resumeBtn} startIcon={<CoffeeIcon/>}>
+             Buy me coffee
+      </Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Thank's in advance
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Mpesa:+255766830442 <br></br>
+            Tigopesa:+255676387827 <br></br>
+            Paypal:ilungafrank3@gmail.com
+          </Typography>
+        </Box>
+      </Modal>
+    </div>
+
+
+
                             <NavLink
                                 to='/#contacts'
                                 smooth={true}
                                 spy='true'
                                 duration={2000}
                             >
-                                <Button className={classes.contactBtn}>
-                                    Contact
+                                <Button className={classes.contactBtn} startIcon={<SmsIcon />} >
+                                    Let's talk
                                 </Button>
                             </NavLink>
                         </div>

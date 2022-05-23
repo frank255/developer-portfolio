@@ -208,13 +208,15 @@
     width: 90%;
   }
   .lcr-buttonContainer {
-    margin: 0 auto;
+    margin: auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    justify-content: space-evenly;
+
   }
   .lcr-buttonContainer button {
-    margin-top: -20%;
+    margin-top: -1%;
   }
 }
 

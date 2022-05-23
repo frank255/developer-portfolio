@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext, useState } from 'react';
 import { Snackbar, IconButton, SnackbarContent } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
@@ -8,6 +9,7 @@ import {
     FaTwitter,
     FaLinkedinIn,
     FaGithub,
+    FaWhatsapp,
     FaYoutube,
     FaBloggerB,
     FaRedditAlien,
@@ -282,7 +284,7 @@ function Contacts() {
 
                     <div className='contacts-details'>
                         <a
-                            // href={`mailto:${contactsData.email}`}
+                             href={`mailto:${contactsData.email}`}
                             className='personal-details'
                         >
                             <div className={classes.detailsIcon}>
@@ -293,7 +295,7 @@ function Contacts() {
                             </p>
                         </a>
                         <a
-                            // href={`tel:${contactsData.phone}`}
+                             href={`tel:${contactsData.phone}`}
                             className='personal-details'
                         >
                             <div className={classes.detailsIcon}>
@@ -313,7 +315,7 @@ function Contacts() {
                         </div>
 
                         <div className='socialmedia-icons'>
-                            {/* {socialsData.twitter && (
+                            {socialsData.twitter && (
                                 <a
                                     href={socialsData.twitter}
                                     target='_blank'
@@ -322,7 +324,7 @@ function Contacts() {
                                 >
                                     <FaTwitter aria-label='Twitter' />
                                 </a>
-                            )} */}
+                            )} 
                             {socialsData.github && (
                                 <a
                                     href={socialsData.github}
@@ -343,7 +345,7 @@ function Contacts() {
                                     <FaLinkedinIn aria-label='LinkedIn' />
                                 </a>
                             )}
-                            {/* {socialsData.instagram && (
+                            {socialsData.instagram && (
                                 <a
                                     href={socialsData.instagram}
                                     target='_blank'
@@ -352,28 +354,24 @@ function Contacts() {
                                 >
                                     <FaInstagram aria-label='Instagram' />
                                 </a>
-                            )}*/}
-                            {socialsData.medium && (
+                            )}
+
+                               
+                            {socialsData.whatsapp && (
                                 <a
-                                    href={socialsData.medium}
+                                    href={socialsData.whatsapp}
                                     target='_blank'
                                     rel='noreferrer'
                                     className={classes.socialIcon}
                                 >
-                                    <FaMediumM aria-label='Medium' />
+                                    <FaWhatsapp aria-label='Whatsapp' />
                                 </a>
-                            )}
+                            )}       
+
+
+                           
                             {/*
-                            {socialsData.blogger && (
-                                <a
-                                    href={socialsData.blogger}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className={classes.socialIcon}
-                                >
-                                    <FaBloggerB aria-label='Blogger' />
-                                </a>
-                            )}
+                           
                             {socialsData.youtube && (
                                 <a
                                     href={socialsData.youtube}
